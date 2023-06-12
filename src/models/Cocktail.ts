@@ -13,10 +13,8 @@ export const normalizeApiCocktail = (input: apiCocktails) => ({
   name: input?.strDrink || "",
   image: input?.strDrinkThumb || "",
   id: input?.idDrink || "",
-  
+  isFav: false
 })
-
-
 
 
 
