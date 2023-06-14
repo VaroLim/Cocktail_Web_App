@@ -1,19 +1,14 @@
-import {Cocktail} from "../../models/Cocktail"
+import {Category} from "../../models/Category"
 
-export const COCKTAIL_ID = 'apiCocktails'
+export const COCKTAIL_ID = 'categoriesCocktails'
 export const FAV_COCKTAILS = 'favCocktails'
 
 
-export const getCachedCocktails = (): Cocktail[] => {
+export const getCachedCocktailsCategories = (): Category[] => {
   const response = window.localStorage.getItem(COCKTAIL_ID)
   return response ? JSON.parse(response) : []
 }
 
-export const setCachedCocktails = (Cocktails: Cocktail[]) => {
+export const setCachedCocktailsCategories = (Cocktails: Category[]) => {
   window.localStorage.setItem(COCKTAIL_ID, JSON.stringify(Cocktails))
-}
-
-export const addNasaPhotoToCached = (cocktail: Cocktail) => {
-  const cachedPhotos = getCachedCocktails()
-  setCachedCocktails([cocktail, ...cachedPhotos])
 }
