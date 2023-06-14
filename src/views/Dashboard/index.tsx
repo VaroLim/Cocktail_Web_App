@@ -1,41 +1,44 @@
 import { FC, memo, useCallback, useEffect, useState } from 'react'
-
 import Header from '../../components/Header'
 import { DashboardContent, DashboardCard } from './styles'
 import { getCocktailsCategories } from '../../services/Cocktail'
 import Footer from '../../components/Footer'
 import Card from '../../components/Card'
+import { cards } from './constants'
+import { Category } from '../../models/Category'
 
-
-
-const Dashboard: FC = () =>{
-  getCocktailsCategories()
+const Dashboard: FC = () => {
+  const [categories, setCategories] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
 
+  const handleSetCategories = useCallback(async() => {
+    const categoriesList = await getCocktailsCategories()
+    setCategories(categoriesList)
+    setIsLoading(false)
+  }, [] )
 
 
+  useEffect(()=>{
+    setIsLoading(true)
+    handleSetCategories()
+  },[handleSetCategories])
 
-  if (isLoading) {
-    return <div>CARGANDO IMÁGENES...</div>
+
+  if(isLoading){
+    return( <div>CARGANDO</div> )
   }
-  return (   
 
+
+  return (
     <DashboardContent>
       <Header />
-        <DashboardCard>
-          <Card />
-          
-      
-        </DashboardCard>
+      <DashboardCard>
+        {categories.map((category,index) => ( <Card key={index} cocktelCategory={category.cocktelCategory} />))}
+      </DashboardCard>
       <Footer />
-    </DashboardContent> 
-
-    
+    </DashboardContent>
   )
-
 }
 
-
-
-export default memo(Dashboard) 
+export default Dashboard

@@ -1,14 +1,15 @@
-export type CocktailsCategoriesResponse = {
-  Drinks: CocktailsCategoryDrinks[]
-}
 
-
-type CocktailsCategoryDrinks = {
+export type CocktailsCategoryDrinks = {
   strCategory: string
 }
 
-export const normalizeCategory = (input:CocktailsCategoryDrinks) => ({
-  category: input?.strCategory || "",
+export type cocktailsCategoriesResponse = {
+  drinks: CocktailsCategoryDrinks[]
+}
+
+
+export const normalizeCategory = (input: CocktailsCategoryDrinks) => ({
+  cocktelCategory: input?.strCategory || '',
 })
 
 export type Category = ReturnType<typeof normalizeCategory>
