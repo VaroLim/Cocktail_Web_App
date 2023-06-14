@@ -17,6 +17,7 @@ export const getCocktailsCategories = async (): Promise<Category[]> => {
     )
 
     const data: cocktailsCategoriesResponse = await response.json()
+    console.log(data)
     const mappedCategories = data.drinks.map(normalizeCategory)
     setCachedCocktailsCategories(mappedCategories)
     return mappedCategories

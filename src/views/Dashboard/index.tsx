@@ -34,7 +34,7 @@ const Dashboard: FC = () => {
     <DashboardContent>
       <Header />
       <DashboardCard>
-        {categories.map((categories,index) => ( <Card key={index} cocktelCategory ={cocktelCategory} />))}
+        {categories.map((category,index) => ( <Card key={index} cocktelCategory={category.cocktelCategory} />))}
       </DashboardCard>
       <Footer />
     </DashboardContent>
