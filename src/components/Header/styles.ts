@@ -20,6 +20,7 @@ text-align: center;
 `
 
 const HeaderTitle = styled.div`
+cursor: pointer;
 color: #c9c00a;
 margin-left: 1rem;
 font-size: 18px;

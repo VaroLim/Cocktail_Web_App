@@ -1,23 +1,18 @@
-import { FC, memo } from "react"
-// import {logoCocktail} from "../../../public/logoCocktail.png"
-import {HeaderContainer,HeaderTitle,HeaderContent} from "./styles"
+import { FC, memo } from 'react'
+import { HeaderContainer, HeaderTitle, HeaderContent } from './styles'
+import { useNavigate } from 'react-router'
 
 const Header: FC = () => {
+  const navigate = useNavigate()
   return (
-  // <img src={logoCocktail} />
-
-  <HeaderContainer>
-
-    <HeaderContent>
-      <HeaderTitle>
-        <h2>
-        La Cocktelería
-        </h2>
-      </HeaderTitle>
-    </HeaderContent>
-
-  </HeaderContainer>
-)
+    <HeaderContainer>
+      <HeaderContent>
+        <HeaderTitle onClick={() => navigate('/')}>
+          <h2>La Cocktelería</h2>
+        </HeaderTitle>
+      </HeaderContent>
+    </HeaderContainer>
+  )
 }
 
 export default memo(Header)
