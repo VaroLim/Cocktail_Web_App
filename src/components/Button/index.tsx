@@ -1,14 +1,14 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import type { Props } from './types'
-import "./styles"
+import {Container} from "./styles"
 
 
-export const Button: FC<Props> = ({ children, onClick }) => {
+const Button: FC<Props> = ({  onClick, children }) => {
   return (
-    <Button onClick={onClick}>
-      {children}
-    </Button>
+    <Container onClick={onClick}>
+    {children}
+    </Container>
   )
 }
 
-export default Button
+export default memo(Button)
