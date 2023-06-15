@@ -2,10 +2,9 @@ import { useCallback } from 'react'
 import { login } from '../../../services/Firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { setToken } from '../../../services/storage/token'
-import { Props } from './types'
 import { setUserInfo } from '../../../services/storage/user'
 
-const useLogic = (onLogin: Props['onLogin']) => {
+const useLogic = () => {
     const navigate = useNavigate()
     const handleOnSubmit = useCallback(
         async (values: { email: string; password: string }) => {
@@ -17,14 +16,13 @@ const useLogic = (onLogin: Props['onLogin']) => {
                     const userInfo = user.providerData
                     setUserInfo(userInfo)
                     setToken(token)
-                    onLogin()
                     navigate('/dashboard')
                 }
             } catch (error) {
                 console.log(error)
             }
         },
-        [navigate, onLogin]
+        [navigate]
     )
     return { handleOnSubmit }
 }

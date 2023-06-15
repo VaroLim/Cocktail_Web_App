@@ -16,10 +16,10 @@ import {
 } from './loginStyles'
 import useLogic from './logic'
 import Footer from '../../../components/Footer'
-import { Props } from './types'
+// import { Props } from './types'
 
-const Login: FC<Props> = ({ onLogin }) => {
-    const { handleOnSubmit } = useLogic(onLogin)
+const Login: FC = ({ }) => {
+    const { handleOnSubmit } = useLogic()
     return (
         <Container>
             <Formik
