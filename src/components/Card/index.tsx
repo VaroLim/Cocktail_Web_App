@@ -1,15 +1,15 @@
 import { FC, memo } from 'react'
 import * as S from './styles'
 import { Props } from './types'
+import Button from '../Button'
 
 
-export const Card: FC <Props> = ({cocktelCategory} ) => {
+export const Card: FC <Props> = ({categoryName, onClick, categorySlug} ) => {
   return (
     <S.CardContainer>
-      {cocktelCategory} 
+      {categoryName} 
       <S.CardContent>
-      
-      IMAGEN
+      {onClick && <Button onClick={() => onClick && onClick(categorySlug)}>button</Button> }
       </S.CardContent>
     </S.CardContainer>
   )
