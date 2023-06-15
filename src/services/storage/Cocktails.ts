@@ -44,15 +44,15 @@ export const setFavCocktail = (cocktail: Cocktail[], categoryName: string) => {
   window.localStorage.setItem(key, JSON.stringify(cocktail));
 };
 
-export const addFavPhoto = (cocktail: Cocktail) => {
-  const currentFavCocktail = getFavCocktail(cocktail.cocktelName); // Pasar categoryName como argumento
-  const existingIndex = currentFavCocktail.findIndex(
-    (item) => item.cocktelName === cocktail.cocktelName
-  );
-  if (existingIndex !== -1) {
-    currentFavCocktail.splice(existingIndex, 1);
-  } else {
-    currentFavCocktail.push(cocktail);
-  }
-  setFavCocktail(currentFavCocktail, cocktail.cocktelName); // Pasar currentFavCocktail y categoryName como argumentos
-};
+
+
+
+
+
+//   if (existingIndex !== -1) {
+//     currentFavCocktail.splice(existingIndex, 1);
+//   } else {
+//     currentFavCocktail.push(cocktail);
+//   }
+//   setFavCocktail(currentFavCocktail, cocktail.cocktelName); // Pasar currentFavCocktail y categoryName como argumentos
+// };
