@@ -1,6 +1,7 @@
 import { Category } from '../../models/Category'
 
 import { Cocktail } from '../../models/Cocktail'
+import Cocktails from '../../views/Cocktails'
 
 export const COCKTAILS_CATEGOIRES_KEY = 'categoriesCocktails'
 export const COCKTAIL_KEY = 'cocktails'
@@ -18,18 +19,13 @@ export const setCachedCocktailsCategories = (Cocktails: Category[]) => {
   )
 }
 
-export const getCachedCocktailsByCategory = (
-  categoryName: string
-): Cocktail[] => {
+export const getCachedCocktailsByCategory = (categoryName: string): Cocktail[] => {
   const key = `${COCKTAIL_KEY}_${categoryName}`
   const response = window.localStorage.getItem(key)
   return response ? JSON.parse(response) : []
 }
 
-export const setCachedCocktailsByCategory = (
-  cocktails: Cocktail[],
-  categoryName: string
-) => {
+export const setCachedCocktailsByCategory = (cocktails: Cocktail[],categoryName: string) => {
   const key = `${COCKTAIL_KEY}_${categoryName}`
   window.localStorage.setItem(key, JSON.stringify(cocktails))
 }
@@ -37,25 +33,26 @@ export const setCachedCocktailsByCategory = (
 
 
 
-export const getFavCocktail = (): Cocktail[] => {
-  const response = window.localStorage.getItem(FAV_COCKTAILS_KEY)
-  return response ? JSON.parse(response) : []
-}
+export const getFavCocktail = (categoryName: string): Cocktail[] => {
+  const key = `${FAV_COCKTAILS_KEY}_${categoryName}`;
+  const response = window.localStorage.getItem(key);
+  return response ? JSON.parse(response) : [];
+};
 
-export const setFavCocktail = (cocktail: Cocktail[]) => {
-  window.localStorage.setItem(FAV_COCKTAILS_KEY, JSON.stringify(cocktail))
-}
-
+export const setFavCocktail = (cocktail: Cocktail[], categoryName: string) => {
+  const key = `${FAV_COCKTAILS_KEY}_${categoryName}`;
+  window.localStorage.setItem(key, JSON.stringify(cocktail));
+};
 
 export const addFavPhoto = (cocktail: Cocktail) => {
-  const currentFavCocktail = getFavCocktail()
+  const currentFavCocktail = getFavCocktail(cocktail.cocktelName); // Pasar categoryName como argumento
   const existingIndex = currentFavCocktail.findIndex(
     (item) => item.cocktelName === cocktail.cocktelName
-  )
+  );
   if (existingIndex !== -1) {
-    currentFavCocktail.splice(existingIndex, 1)
+    currentFavCocktail.splice(existingIndex, 1);
   } else {
-    currentFavCocktail.push(cocktail)
+    currentFavCocktail.push(cocktail);
   }
-  setFavCocktail(currentFavCocktail)
-}
+  setFavCocktail(currentFavCocktail, cocktail.cocktelName); // Pasar currentFavCocktail y categoryName como argumentos
+};

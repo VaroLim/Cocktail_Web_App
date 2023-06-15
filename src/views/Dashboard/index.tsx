@@ -42,7 +42,11 @@ const Dashboard: FC = () => {
     <DashboardContent>
       <Header />
       <DashboardCard>
-        {categories.map((category,index) => ( <Card key={index} onClick={handleGoToCocktailsByCategory} categoryName={category.name} categorySlug={category.slug}  />))}
+        {categories.map((category,index) => ( <Card 
+        key={index} 
+        onClick={handleGoToCocktailsByCategory} 
+        categoryName={category.name} 
+        categorySlug={category.slug}  />))}
       </DashboardCard>
       <Footer />
     </DashboardContent>

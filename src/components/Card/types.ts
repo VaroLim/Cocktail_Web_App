@@ -10,6 +10,6 @@ export type Props = {
   cocktail?: Cocktail
   cocktelName?: string;
   handleFav?: ()=> void
-  onClick2?:() => void
   cocktelId?: string;
+  
 }
