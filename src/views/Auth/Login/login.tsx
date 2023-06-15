@@ -30,7 +30,8 @@ const Login: FC = ({ }) => {
                 {({ errors, handleSubmit, handleChange, values }) => (
                     <Form onSubmit={handleSubmit}>
                         <FormContent>
-                            <Title>Ready to begin our APOD journey?</Title>
+                            <Title>Would you like to know our fabulous cocktails?
+                                Register here.</Title>
                             <InputController>
                                 <Label>Email</Label>
                                 <Input
