@@ -1,4 +1,6 @@
+import { FaHeart } from "react-icons/fa";
 import styled from "styled-components";
+import { Props } from "./types";
 
 
 export const CardContainer = styled.div`
@@ -21,6 +23,9 @@ border-top: 1px solid gray;
 padding: 16px;
 `
 
-
+export const StyledHeartIcon = styled(FaHeart)<{ $variant: Props["variant"] }>`
+color: ${({ theme, $variant }) =>
+      $variant === "primary" ? theme.colors.gray : theme.colors.redOscure};
+`;
 
 

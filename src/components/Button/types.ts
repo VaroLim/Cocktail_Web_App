@@ -4,5 +4,5 @@ export type Props = {
   children?: ReactNode
   onClick?: () => void
   type?: "button" | "submit"
-  variant?: 'primary' | 'secondary'
+  // variant?: 'primary' | 'secondary' | undefined
 }

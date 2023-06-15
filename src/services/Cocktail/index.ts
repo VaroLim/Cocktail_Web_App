@@ -1,15 +1,15 @@
 import {
   Category,
   cocktailsCategoriesResponse,
-  cocktailsListResponse,
   normalizeCategory,
-  normalizeCocktail,
 } from '../../models/Category'
+import { cocktailsListResponse, normalizeCocktail } from '../../models/Cocktail'
+
 import {
-  getCachedCocktailsCategories,  
+  getCachedCocktailsCategories,
   setCachedCocktailsCategories,
   getCachedCocktailsByCategory,
-  setCachedCocktailsByCategory
+  setCachedCocktailsByCategory,
 } from '../storage/Cocktails'
 
 export const getCocktailsCategories = async (): Promise<Category[]> => {
@@ -20,7 +20,7 @@ export const getCocktailsCategories = async (): Promise<Category[]> => {
     )
 
     const data: cocktailsCategoriesResponse = await response.json()
-    
+
     const mappedCategories = data.drinks.map(normalizeCategory)
     setCachedCocktailsCategories(mappedCategories)
     return mappedCategories
@@ -29,20 +29,17 @@ export const getCocktailsCategories = async (): Promise<Category[]> => {
   return savedCategories
 }
 
-
 export const getCocktailsByCategory = async (categoryName: string) => {
   const savedList = getCachedCocktailsByCategory(categoryName)
 
-  if (!savedList || savedList.length <=0 ) {
-    const response = await fetch (
-      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categoryName}`      
+  if (!savedList || savedList.length <= 0) {
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categoryName}`
     )
-      const data: cocktailsListResponse = await response.json()
-      const mappedList = data.drinks.map(normalizeCocktail)
-      setCachedCocktailsByCategory(mappedList,categoryName )
-      return mappedList
-
+    const data: cocktailsListResponse = await response.json()
+    const mappedList = data.drinks.map(normalizeCocktail)
+    setCachedCocktailsByCategory(mappedList, categoryName)
+    return mappedList
   }
   return savedList
-  
 }

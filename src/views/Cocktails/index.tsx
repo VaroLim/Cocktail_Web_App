@@ -4,18 +4,27 @@ import { DashboardContent, DashboardCard } from './styles'
 import { getCocktailsByCategory } from '../../services/Cocktail'
 import Footer from '../../components/Footer'
 import Card from '../../components/Card'
-import { Cocktail } from '../../models/Category'
+import { Cocktail } from '../../models/Cocktail'
 import { useParams } from 'react-router'
+import { addFavPhoto } from '../../services/storage/Cocktails'
 
 const Cocktails: FC = () => {
   const {categoryName} = useParams()
   const [cocktails, setCocktails] = useState<Cocktail[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
+
+const handleFav = useCallback((cocktail: Cocktail) => {
+    addFavPhoto(cocktail)
+  }, []);
+
+
+
   const handleGetCocktailsByCategory = useCallback(async (categoryName: string) => {
     const retrievedCocktails = await getCocktailsByCategory(categoryName)
     setCocktails(retrievedCocktails)
     setIsLoading(false)
+
   }, [] )
 
 
@@ -36,7 +45,9 @@ const Cocktails: FC = () => {
     <DashboardContent>
       <Header />
       <DashboardCard>
-        {cocktails.map((cocktail,index) => ( <Card key={index} categoryName={cocktail.cocktelName} />))}
+        {cocktails.map((cocktail,index) => ( <Card  key={index} categoryName={cocktail.cocktelName} cocktail={cocktail}
+        />))}
+
       </DashboardCard>
       <Footer />
     </DashboardContent>
