@@ -12,5 +12,5 @@ export type Props = {
   handleFav?: ()=> void
   onClick2?:() => void
   cocktelId?: string;
-
+  onDetail?:() => void
 }

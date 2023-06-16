@@ -1,6 +1,6 @@
 import { FC, memo, useCallback, useEffect, useState } from 'react'
 import Header from '../../components/Header'
-import { DashboardContent, DashboardCard } from './styles'
+import { DashboardContent, DashboardCard, Container } from './styles'
 import { getCocktailsCategories } from '../../services/Cocktail'
 import Footer from '../../components/Footer'
 import Card from '../../components/Card'
@@ -40,13 +40,15 @@ const Dashboard: FC = () => {
 
 
   return (
-    <DashboardContent>
+    <Container>
       <Header />
+    <DashboardContent>      
       <DashboardCard>
         {categories.map((category,index) => ( <Card key={index} onClick={handleGoToCocktailsByCategory} categoryName={category.name} categorySlug={category.slug}  />))}
       </DashboardCard>
       <Footer />
     </DashboardContent>
+    </Container>
   )
 }
 

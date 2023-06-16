@@ -8,7 +8,7 @@ const Header: FC = () => {
     <HeaderContainer>
       <HeaderContent>
         <HeaderTitle onClick={() => navigate('/')}>
-          <h2>La Cocktelería</h2>
+          La Cocktelería
         </HeaderTitle>
       </HeaderContent>
     </HeaderContainer>
