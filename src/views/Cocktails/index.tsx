@@ -6,7 +6,7 @@ import Footer from '../../components/Footer'
 import Card from '../../components/Card'
 import { Cocktail } from '../../models/Cocktail'
 import { useParams } from 'react-router'
-import { addFavPhoto } from '../../services/storage/Cocktails'
+import { addFavCocktail } from '../../services/storage/Cocktails'
 
 const Cocktails: FC = () => {
   const {categoryName} = useParams()
@@ -14,9 +14,8 @@ const Cocktails: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
 
 
-const handleFav = useCallback((cocktail: Cocktail) => {
-    addFavPhoto(cocktail)
-  }, []);
+  
+
 
 
 
@@ -45,7 +44,7 @@ const handleFav = useCallback((cocktail: Cocktail) => {
     <DashboardContent>
       <Header />
       <DashboardCard>
-        {cocktails.map((cocktail,index) => ( <Card  key={index} categoryName={cocktail.cocktelName} cocktail={cocktail}
+        {cocktails.map((cocktail,index) => ( <Card key={index} categoryName={cocktail.cocktelName} cocktail={cocktail}
         />))}
 
       </DashboardCard>
