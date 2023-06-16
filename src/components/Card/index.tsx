@@ -1,43 +1,60 @@
-import { FC, memo, useCallback, } from 'react'
+import { FC, memo, useCallback, useState } from 'react'
 import * as S from './styles'
 import { Props } from './types'
 import Button from '../Button'
 import { addFavCocktail } from '../../services/storage/Cocktails'
+import { useNavigate } from 'react-router-dom'
 
 
 
-
-export const Card: FC<Props> = ({  categoryName, onClick, categorySlug, isDetail=false }) => {
-
-
-  
+export const Card: FC<Props> = ({
+  categoryName,
+  cocktelId,
+  cocktelImg,
+  onClick,
+  categorySlug,
+  isDetail = false,
+}) => {
+  const [isFav, setIsFav] = useState(false)
   const handleFav = useCallback(() => {
-    console.log("click")
+    console.log('click')
     const cocktail = {
       cocktelName: categoryName,
-      cocktelImg: 'imagen',
-      cocktelId: 'id'
+      cocktelImg: 'Img',
+      cocktelId: 'id',
     }
+    setIsFav(!isFav)
     addFavCocktail(cocktail)
-  }, [categoryName])
+  }, [categoryName, isFav])
 
   const handleButtonClick = useCallback(() => {
     handleFav()
   }, [handleFav])
 
+
+  const navigate = useNavigate()
+  
+  const handleGoToDetail = useCallback(() => {
+    
+    navigate(`/details/${encodeURIComponent(categoryName)}/${encodeURIComponent(cocktelImg ?? '')} `);
+  }, [categoryName , navigate]);
+  
   return (
     <S.CardContainer>
-      {categoryName}
+      <S.Title>{categoryName}</S.Title>
+      
+      {isFav &&(<div><S.HeartIcon  /></div>)}
       <S.CardContent>
         {onClick && (
           <Button onClick={() => onClick && onClick(categorySlug)}>
-            button
-          </Button>
-        )}
+            Lista Cóckteles
+          </Button> )}
+          <S.Img src={cocktelImg}  />
+        <S.ContentButton>        {!categorySlug && <Button onClick={handleButtonClick}>FAV</Button>}
+        {!categorySlug && <Button onClick={handleGoToDetail}>detail</Button>} 
+        </S.ContentButton>
 
-        { !categorySlug && (<Button onClick={handleButtonClick} >
-            FAV
-            </Button>)}
+        
       </S.CardContent>
     </S.CardContainer>
   )

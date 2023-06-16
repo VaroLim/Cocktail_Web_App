@@ -1,33 +1,35 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const HeaderContainer = styled.div`
   background-color: black;
   color: #fff;
-  padding: 5px;
-
 `
 
-
-
-
 const HeaderContent = styled.div`
-display: flex;
-background-color: #640985;
-height: 4.5rem;
-/* padding: 5px; */
-text-align: center;
-
+  display: flex;
+  background-color: #222;
+  height: 4.5rem;
+  text-align: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const HeaderTitle = styled.div`
-cursor: pointer;
-color: #c9c00a;
-margin-left: 1rem;
-font-size: 18px;
-line-height: 1.2;
+  cursor: pointer;
+  color: #c9c00a;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  padding: 1rem;
+  font-weight: 900;
 
-
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
 `
 
-
-export {HeaderContainer, HeaderTitle,HeaderContent};
+export { HeaderContainer, HeaderTitle, HeaderContent }
