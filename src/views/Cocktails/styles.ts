@@ -4,6 +4,7 @@ export const Container = styled.div`
 overflow: auto;
 background-size: cover;
 background: #635445;
+height: 100vh;
 `
 
 export const DashboardContent = styled.div`
@@ -11,14 +12,14 @@ export const DashboardContent = styled.div`
   margin-top: 1rem;
   align-items: center;
   justify-content: center;
-  /* height: 91vh; */
+  height: 85%;
   background: #635445;
   overflow: auto;
 `
   
 export const DashboardCard = styled.div`
   background: #705d49;
-  
+  height: 100%;
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
