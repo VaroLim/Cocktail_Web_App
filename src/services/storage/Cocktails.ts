@@ -1,8 +1,7 @@
 import { Category } from '../../models/Category'
-
 import { Cocktail } from '../../models/Cocktail'
 
-export const COCKTAILS_CATEGOIRES_KEY = 'categoriesCocktails'
+export const COCKTAILS_CATEGOIRES_KEY='categoriesCocktails'
 export const COCKTAIL_KEY = 'cocktails'
 export const FAV_COCKTAILS_KEY = 'favCocktails'
 
@@ -38,16 +37,16 @@ export const setCachedCocktailsByCategory = (
 
 
 export const getFavCocktail = (): Cocktail[] => {
-  const response = window.localStorage.getItem(FAV_COCKTAILS_KEY)
-  return response ? JSON.parse(response) : []
+  const response = window.localStorage.getItem(FAV_COCKTAILS_KEY);
+  return response ? JSON.parse(response) : [];
 }
 
 export const setFavCocktail = (cocktail: Cocktail[]) => {
-  window.localStorage.setItem(FAV_COCKTAILS_KEY, JSON.stringify(cocktail))
+  window.localStorage.setItem(FAV_COCKTAILS_KEY ,JSON.stringify(cocktail))
 }
 
 
-export const addFavPhoto = (cocktail: Cocktail) => {
+export const addFavCocktail = (cocktail: Cocktail) => {
   const currentFavCocktail = getFavCocktail()
   const existingIndex = currentFavCocktail.findIndex(
     (item) => item.cocktelName === cocktail.cocktelName

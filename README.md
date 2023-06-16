@@ -1,3 +1,29 @@
+Crear una vista de panel de control (dashboard) para mostrar la lista de entidades.
+
+Crear una vista de detalle para cada entidad.
+
+Implementar una vista de inicio de sesión y registro utilizando Firebase para autenticación y protección de rutas. 
+
+
+Implementar acciones para crear, editar y eliminar entidades en nuestro almacenamiento local.
+
+Crear una vista de perfil del usuario que muestre el nombre, correo electrónico, teléfono y país, con un botón en la barra de navegación para acceder a los favoritos guardados.
+
+Agregar un botón para sincronizar nuevamente los datos de la API.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

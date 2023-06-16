@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import Card from '../../components/Card'
 import { Category } from '../../models/Category'
 import { useNavigate } from 'react-router'
+import Cocktails from '../Cocktails'
 
 const Dashboard: FC = () => {
   const navigate = useNavigate()

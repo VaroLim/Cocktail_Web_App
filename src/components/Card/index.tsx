@@ -2,14 +2,28 @@ import { FC, memo, useCallback, } from 'react'
 import * as S from './styles'
 import { Props } from './types'
 import Button from '../Button'
-import { addFavPhoto } from '../../services/storage/Cocktails'
-
-
-export const Card: FC<Props> = ({ categoryName, onClick, categorySlug, isDetail=false, handleFav }) => {
+import { addFavCocktail } from '../../services/storage/Cocktails'
 
 
 
 
+export const Card: FC<Props> = ({  categoryName, onClick, categorySlug, isDetail=false }) => {
+
+
+  
+  const handleFav = useCallback(() => {
+    console.log("click")
+    const cocktail = {
+      cocktelName: categoryName,
+      cocktelImg: 'imagen',
+      cocktelId: 'id'
+    }
+    addFavCocktail(cocktail)
+  }, [categoryName])
+
+  const handleButtonClick = useCallback(() => {
+    handleFav()
+  }, [handleFav])
 
   return (
     <S.CardContainer>
@@ -21,7 +35,7 @@ export const Card: FC<Props> = ({ categoryName, onClick, categorySlug, isDetail=
           </Button>
         )}
 
-        { !categorySlug && (<Button onClick={handleFav} >
+        { !categorySlug && (<Button onClick={handleButtonClick} >
             FAV
             </Button>)}
       </S.CardContent>
