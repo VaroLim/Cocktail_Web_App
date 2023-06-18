@@ -5,8 +5,6 @@ import Button from '../Button'
 import { addFavCocktail } from '../../services/storage/Cocktails'
 import { useNavigate } from 'react-router-dom'
 
-
-
 export const Card: FC<Props> = ({
   categoryName,
   cocktelId,
@@ -31,30 +29,28 @@ export const Card: FC<Props> = ({
     handleFav()
   }, [handleFav])
 
-
   const navigate = useNavigate()
-  
   const handleGoToDetail = useCallback(() => {
-    
+
     navigate(`/details/${encodeURIComponent(categoryName)}/${encodeURIComponent(cocktelImg ?? '')} `);
-  }, [categoryName , navigate]);
-  
+  }, [categoryName, navigate]);
+
   return (
     <S.CardContainer>
       <S.Title>{categoryName}</S.Title>
-      
-      {isFav &&(<div><S.HeartIcon  /></div>)}
+
+      {isFav && (<div><S.HeartIcon /></div>)}
       <S.CardContent>
         {onClick && (
           <Button onClick={() => onClick && onClick(categorySlug)}>
             Lista Cóckteles
-          </Button> )}
-          <S.Img src={cocktelImg}  />
+          </Button>)}
+        <S.Img src={cocktelImg} />
         <S.ContentButton>        {!categorySlug && <Button onClick={handleButtonClick}>FAV</Button>}
-        {!categorySlug && <Button onClick={handleGoToDetail}>detail</Button>} 
+          {!categorySlug && <Button onClick={handleGoToDetail}>detail</Button>}
         </S.ContentButton>
 
-        
+
       </S.CardContent>
     </S.CardContainer>
   )
