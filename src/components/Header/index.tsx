@@ -8,7 +8,7 @@ const Header: FC = () => {
     <HeaderContainer>
       <HeaderContent>
         <HeaderTitle onClick={() => navigate('/')}>
-          La Cocktelería
+          Cocktel-Freaks
         </HeaderTitle>
       </HeaderContent>
     </HeaderContainer>
