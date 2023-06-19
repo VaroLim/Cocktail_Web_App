@@ -1,6 +1,5 @@
 import { FaHeart } from 'react-icons/fa'
 import styled from 'styled-components'
-import { Props } from './types'
 
 export const CardContainer = styled.div`
   height: auto;

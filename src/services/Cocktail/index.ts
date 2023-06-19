@@ -4,7 +4,6 @@ import {
   normalizeCategory,
 } from '../../models/Category'
 import { cocktailsListResponse, normalizeCocktail } from '../../models/Cocktail'
-
 import {
   getCachedCocktailsCategories,
   setCachedCocktailsCategories,

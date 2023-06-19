@@ -7,12 +7,9 @@ import {
   Title,
   Container,
 } from './styles'
-
 import Footer from '../../components/Footer'
-import Card from '../../components/Card'
 import { Props } from '../../components/Card/types'
 import { useParams } from 'react-router-dom'
-import Cocktails from '../Cocktails'
 
 const Details: FC<Props> = () => {
   const { categoryName, cocktelImg } = useParams()

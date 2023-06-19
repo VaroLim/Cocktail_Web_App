@@ -1,13 +1,22 @@
 import { FC, memo } from 'react'
-import {
-  Button, Container, Form, FormContent, Info, Input, InputController,
-  InputError, Label, Link, Title,
-} from './signupStyles'
 import { Formik } from 'formik'
+import {
+  Button,
+  Container,
+  Form,
+  FormContent,
+  Info,
+  Input,
+  InputController,
+  InputError,
+  Label,
+  Link,
+  Title,
+} from './signupStyles'
 import { InitialValues, ValidationSchema } from './constant'
 import useLogic from './logic'
 
-const Signup: FC = ({ }) => {
+const Signup: FC = () => {
   const { handleOnSubmit } = useLogic()
   return (
     <Container>

@@ -1,12 +1,11 @@
 import { FC, memo, useCallback, useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 import Header from '../../components/Header'
 import { DashboardContent, DashboardCard, Container } from './styles'
 import { getCocktailsByCategory } from '../../services/Cocktail'
 import Footer from '../../components/Footer'
 import Card from '../../components/Card'
 import { Cocktail } from '../../models/Cocktail'
-import { useParams } from 'react-router'
-import { removeCocktail } from '../../services/storage/Cocktails'
 
 const Cocktails: FC = () => {
   const { categoryName } = useParams()
@@ -20,41 +19,36 @@ const Cocktails: FC = () => {
       setIsLoading(false)
     },
     []
-  );
-
-
-
+  )
 
   useEffect(() => {
     if (categoryName) {
       setIsLoading(true)
       handleGetCocktailsByCategory(categoryName)
     }
-  }, [categoryName])
+  }, [categoryName, handleGetCocktailsByCategory])
 
   if (isLoading) {
     return <div>CARGANDO</div>
   }
 
   return (
-    <Container>    
+    <Container>
       <Header />
       <DashboardContent>
-      
-      <DashboardCard>
-        {cocktails.map((cocktail, index) => (
-          <Card
-            key={index}
-            categoryName={cocktail.cocktelName}
-            cocktail={cocktail}
-            cocktelImg={cocktail.cocktelImg}
-
-          />
-        ))}
-      </DashboardCard>
-      <Footer />
-    </DashboardContent></Container>
-
+        <DashboardCard>
+          {cocktails.map((cocktail, index) => (
+            <Card
+              key={index}
+              categoryName={cocktail.cocktelName}
+              cocktail={cocktail}
+              cocktelImg={cocktail.cocktelImg}
+            />
+          ))}
+        </DashboardCard>
+        <Footer />
+      </DashboardContent>
+    </Container>
   )
 }
 

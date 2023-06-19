@@ -6,7 +6,7 @@ import Login from '../../views/Auth/Login/login'
 import Signup from '../../views/Auth/Signup/signup'
 import Details from '../../views/Details'
 
-const Router: FC = ({ }) => {
+const Router: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
