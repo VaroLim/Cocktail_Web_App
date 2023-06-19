@@ -32,6 +32,7 @@ export const DashboardCard = styled.div`
   align-items: center;
   padding: 2rem;
   border-radius: 2rem;
+
   height: 80%;
   width: 80%;
   overflow: auto;

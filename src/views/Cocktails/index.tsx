@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import Card from '../../components/Card'
 import { Cocktail } from '../../models/Cocktail'
 import { useParams } from 'react-router'
+import { removeCocktail } from '../../services/storage/Cocktails'
 
 const Cocktails: FC = () => {
   const { categoryName } = useParams()
@@ -19,7 +20,10 @@ const Cocktails: FC = () => {
       setIsLoading(false)
     },
     []
-  )
+  );
+
+
+
 
   useEffect(() => {
     if (categoryName) {

@@ -1,12 +1,13 @@
 import { FC, memo, useCallback, useEffect, useState } from 'react'
 import Header from '../../components/Header'
-import { DashboardContent, DashboardCard, Container } from './styles'
+import { DashboardContent, DashboardCard, Container} from './styles'
 import { getCocktailsCategories } from '../../services/Cocktail'
 import Footer from '../../components/Footer'
 import Card from '../../components/Card'
 import { Category } from '../../models/Category'
 import { useNavigate } from 'react-router'
 import Cocktails from '../Cocktails'
+// import Background from '../../components/Background'
 
 const Dashboard: FC = () => {
   const navigate = useNavigate()
@@ -39,6 +40,7 @@ const Dashboard: FC = () => {
   return (
     <Container>
       <Header />
+
       <DashboardContent>
         <DashboardCard>
           {categories.map((category, index) => (
