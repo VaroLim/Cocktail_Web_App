@@ -34,8 +34,6 @@ export const setCachedCocktailsByCategory = (
 }
 
 
-
-
 export const getFavCocktail = (): Cocktail[] => {
   const response = window.localStorage.getItem(FAV_COCKTAILS_KEY);
   return response ? JSON.parse(response) : [];
@@ -58,3 +56,17 @@ export const addFavCocktail = (cocktail: Cocktail) => {
   }
   setFavCocktail(currentFavCocktail)
 }
+
+// export const removeCocktail = (cocktail: Cocktail) => {
+//   const currentCocktail = getCachedCocktailsByCategory(cocktail.cocktelName)
+//   const existingIndex = currentCocktail.findIndex(
+//     (item) => item.cocktelId. === cocktail.cocktelId
+//   )
+//   if (existingIndex !== -1) {
+//     currentCocktail.splice(existingIndex, 1)
+//   } else {
+//     currentCocktail.push(cocktail)
+//   }
+//   setCachedCocktailsByCategory(currentCocktail, JSON.stringify(cocktail))
+//   return currentCocktail
+// }
