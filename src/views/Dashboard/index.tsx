@@ -15,48 +15,48 @@ const Dashboard: FC = () => {
   const [categories, setCategories] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
-
   const handleSetCategories = useCallback(async () => {
     const categoriesList = await getCocktailsCategories()
     setCategories(categoriesList)
     setIsLoading(false)
-    
-  }, [] )
+  }, [])
 
-  const handleGoToCocktailsByCategory = useCallback(async (categoryName?: string) => {
-    navigate(`/categories/${categoryName}`)
+  const handleGoToCocktailsByCategory = useCallback(
+    async (categoryName?: string) => {
+      navigate(`/categories/${categoryName}`)
+    },
+    [navigate]
+  )
 
-  }, [navigate] )
-
-
-  useEffect(()=>{
-    
+  useEffect(() => {
     setIsLoading(true)
     handleSetCategories()
-  },[handleSetCategories])
+  }, [handleSetCategories])
 
-  if(isLoading){
-    return( <div>CARGANDO</div> )
+  if (isLoading) {
+    return <div>CARGANDO</div>
   }
-
 
   return (
     <Container>
       <Header />
 
-    <DashboardContent>      
-      <DashboardCard>
-        {categories.map((category,index) => ( 
-        <Card 
-        key={index} 
-        onClick={handleGoToCocktailsByCategory} categoryName={category.name} 
-        categorySlug={category.slug} 
-        
-        />))}
-      </DashboardCard>
+      <DashboardContent>
+        <DashboardCard>
+          {categories.map((category, index) => (
+            <Card
+              key={index}
+              onClick={handleGoToCocktailsByCategory}
+              categoryName={category.name}
+              categorySlug={category.slug}
+            />
+          ))}
+        </DashboardCard>
+      </DashboardContent>
       <Footer />
-    </DashboardContent>
     </Container>
+
+
   )
 }
 

@@ -29,7 +29,7 @@ const Header: FC = () => {
       <HeaderContent>
       <Button onClick={handleClick}>SYNC</Button>
         <HeaderTitle onClick={() => navigate('/')}>
-          La Cocktelería
+          Cocktel-Freaks
         </HeaderTitle>
       </HeaderContent>
     </HeaderContainer>

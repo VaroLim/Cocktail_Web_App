@@ -8,8 +8,6 @@ import { addFavCocktail,
 import { useNavigate } from 'react-router-dom'
 import { Cocktail } from '../../models/Cocktail'
 
-
-
 export const Card: FC<Props> = ({
   categoryName,
   cocktelImg,
@@ -56,20 +54,23 @@ export const Card: FC<Props> = ({
   return (
     <S.CardContainer>
       <S.Title>{categoryName}</S.Title>
+
       {/* <Button onClick={handleButtonRemove}>DELETE</Button> */}
       {isFav &&(<div><S.HeartIcon  /></div>)}
       <S.CardContent>
         {onClick && (
           <Button onClick={() => onClick && onClick(categorySlug)}>
             Lista Cóckteles
+
           </Button> )}
           <S.Img src={cocktelImg}  />
         <S.ContentButton>        
           {!categorySlug && <Button onClick={handleButtonClick}>FAV</Button>}
           {!categorySlug && <Button onClick={handleGoToDetail}>detail</Button>} 
+
         </S.ContentButton>
 
-        
+
       </S.CardContent>
     </S.CardContainer>
   )
